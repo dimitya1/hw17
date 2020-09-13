@@ -78,5 +78,5 @@ while (true) {
         file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/sendMessage?chat_id={$chatID}&text={$answer}");
     }
 
-    sleep(3);
+    sleep(2);
 }
