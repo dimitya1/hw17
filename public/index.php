@@ -56,27 +56,50 @@ $kernel->terminate($request, $response);
 
 
 
+//
+//file_put_contents('log.log', file_get_contents('php://input'), FILE_APPEND);
+//
+//
+//$message = json_decode(file_get_contents('php://input'), true);
+//
+//$chatID = $message['message']['chat']['id'];
+//
+//$text = $message['message']['text'];
+//
+//if($order = \App\Models\Order::find($text)) {
+//    $answer = urlencode('Order: ' . $order->title . "\n" .
+//        'Status: ' . ($order->status ? 'Completed' : 'In progress'));
+//} else $answer = 'Oops! There are no orders with id ' . $text . '!';
+//
+//file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/sendMessage?chat_id={$chatID}&text={$answer}");
+//
+//
+//
+//
+//
+//https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/setWebhook?url=https://f953e1a372f2.ngrok.io
 
-$offset = 0;
 
-while (true) {
-    $json = file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/getUpdates?offset=" . $offset);
-    $data = json_decode($json, true);
-
-    foreach ($data['result'] as $message) {
-        $offset = $message['update_id'] + 1;
-
-        $chatID = $message['message']['chat']['id'];
-
-        $text = $message['message']['text'];
-
-        if($order = \App\Models\Order::find($text)) {
-            $answer = urlencode('Order: ' . $order->title . "\n" .
-                'Status: ' . ($order->status ? 'Completed' : 'In progress'));
-        } else $answer = 'Oops! There are no orders with id ' . $text . '!';
-
-        file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/sendMessage?chat_id={$chatID}&text={$answer}");
-    }
-
-    sleep(2);
-}
+//$offset = 0;
+//
+//while (true) {
+//    $json = file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/getUpdates?offset=" . $offset);
+//    $data = json_decode($json, true);
+//
+//    foreach ($data['result'] as $message) {
+//        $offset = $message['update_id'] + 1;
+//
+//        $chatID = $message['message']['chat']['id'];
+//
+//        $text = $message['message']['text'];
+//
+//        if($order = \App\Models\Order::find($text)) {
+//            $answer = urlencode('Order: ' . $order->title . "\n" .
+//                'Status: ' . ($order->status ? 'Completed' : 'In progress'));
+//        } else $answer = 'Oops! There are no orders with id ' . $text . '!';
+//
+//        file_get_contents("https://api.telegram.org/bot1249383220:AAG2HTTt6SegvcCejD9ex2-NRpyhtw4ISaQ/sendMessage?chat_id={$chatID}&text={$answer}");
+//    }
+//
+//    sleep(2);
+//}
